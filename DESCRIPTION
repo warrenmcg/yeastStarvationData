@@ -1,0 +1,21 @@
+Package: yeastStarvationData
+Title: Marguerat et al 2012 Yeast Nitrogen Starvation Data
+Version: 0.0.0.9000
+Authors@R: person("Warren", "McGee", email = "warren.a.mcg@gmail.com", role = c("aut", "cre"))
+Description: This data package includes kallisto-processed and sleuth-processed data from
+  Marguerat et al. Cell 2012 (doi: 10.1016/j.cell.2012.09.019). The experiment had
+  fission yeast (Schizosaccharomyces pombe) cultured in control media or media without a nitrogen
+  source. The cells were grown for 24 hours and then processed for poly-A-enriched RNA-Seq.
+  The raw data is found at ArrayExpress, accession E-MTAB-1154.
+Depends: R (>= 3.0)
+Imports:
+  sleuth (>= 0.30.0)
+Suggests:
+  Biostrings,
+  dplyr,
+  openxlsx,
+  sleuthALR
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
