@@ -1,0 +1,13 @@
+{
+	"n_targets": 7269,
+	"n_bootstraps": 100,
+	"n_processed": 36858706,
+	"n_pseudoaligned": 31790750,
+	"n_unique": 29531699,
+	"p_pseudoaligned": 86.3,
+	"p_unique": 80.1,
+	"kallisto_version": "0.44.0",
+	"index_version": 10,
+	"start_time": "Wed May 30 14:39:11 2018",
+	"call": "kallisto quant -i ~/sleuth_paper_analysis/index/ASM294v2.pombase.all.kidx -b 100 -l 200 -s 20 --single --fr-stranded -o inst/extdata/ERR135907 -t 4 ~/sleuth_paper_analysis/marguerat/data/ERR135907.fastq.gz"
+}
