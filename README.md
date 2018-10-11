@@ -2,6 +2,15 @@
 
 This data package contains processed data from [Marguerat et al. Cell 2012](https://doi.org/10.1016/j.cell.2012.09.019).
 
+## Table of Contents:
++ [**Background**](https://github.com/warrenmcg/yeastStarvationData#background)
++ [**R Datasets**](https://github.com/warrenmcg/yeastStarvationData#r-datasets)
++ [**`kallisto` Datasets**](https://github.com/warrenmcg/yeastStarvationData#kallisto-datasets)
++ [**Using this package with `sleuth`**](https://github.com/warrenmcg/yeastStarvationData#using-this-package-with-sleuth)
++ [**Using this package with `sleuth-ALR`**](https://github.com/warrenmcg/yeastStarvationData#using-this-package-with-sleuth-alr)
++ [**Installation of `yeastStarvationData`**](https://github.com/warrenmcg/yeastStarvationData#installation-of-yeaststarvationdata)
++ [**Full script for reproducibility**](https://github.com/warrenmcg/yeastStarvationData#full-script-for-reproducibility)
+
 ## Background
 
 In this paper, fission yeast (*Schizosaccharomyces pombe*) cells were grown for 24 hours on either Edinburgh minimal media (EMM)
@@ -11,7 +20,9 @@ rRNA-depletion step). Each sample was also processed for quantification of copy 
 Seven external controls were used to estimated copy numbers per cell of 49 mRNAs, and the results from these calibration mRNAs
 were used to estimate copy numbers per cell for the rest of the yeast genome.
 
-## Contents of the R Datasets
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
+
+## R Datasets
 
 Contained in this data package are the following components:
 + `absCounts`: This `data.frame` contains the estimated copy numbers per cell for each of the four samples and the fold change
@@ -43,6 +54,7 @@ data(denom)
 data(yeastAnnos)
 data(yeastS2C)
 ```
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
 
 ## `kallisto` Datasets
 
@@ -70,6 +82,7 @@ kal_dirs <- system.file("extdata", package = "yeastStarvationData")
 kal_dir <- system.file("extdata", "ERR135906",
   package = "yeastStarvationData", mustWork = TRUE)
 ```
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
 
 ## Using this package with [`sleuth`](https://github.com/pachterlab/sleuth)
 
@@ -83,6 +96,7 @@ yeastS2C$path <- system.file("extdata", package = "yeastStarvationData")
 so <- sleuth::sleuth_prep(yeastS2C, ~condition, target_mapping = yeastAnnos)
 ### then continue with the rest of the sleuth pipeline
 ```
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
 
 ## Using this package with [`sleuth-ALR`](https://github.com/warrenmcg/sleuth-ALR)
 
@@ -103,6 +117,7 @@ so <- sleuthALR::make_lr_sleuth_object(
         denom_name = denom,
         delta = 0.01)
 ```
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
 
 ## Installation of `yeastStarvationData`
 
@@ -110,6 +125,7 @@ The recommended approach is to use [`devtools`](https://github.com/r-lib/devtool
 ```
 devtools::install_github('warrenmcg/yeastStarvationData')
 ```
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
 
 ## Full script for reproducibility
 
@@ -126,21 +142,17 @@ source(script_file)
 It assumes that [`kallisto`](https://github.com/pachterlab/kallisto) is installed on the
 machine's `$PATH` and that the following packages are installed:
 
-+ `matrixStats` (`install.packages("matrixStats")`)
+#### On CRAN
++ [dplyr](https://github.com/tidyverse/dplyr): `install.packages("dplyr")`
 
-+ `openxlsx` (`install.packages("openxlsx")`)
++ [matrixStats](https://github.com/HenrikBengtsson/matrixStats): `install.packages("matrixStats")`
 
-### On Bioconductor
-+ `Biostrings`:
++ [openxlsx](https://github.com/awalker89/openxlsx): `install.packages("openxlsx")`
+
+#### On Bioconductor
++ [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html):
 ```
 source("https://bioconductor.org/biocLite.R")
 biocLite("Biostrings")
 ```
-
-The script can be run using the following line of code:
-```
-script_file <- system.file('scripts', 'make-data.R',
-                 package = 'yeastStarvationData',
-                 mustWork = TRUE)
-source(script_file)
-```
+[return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
