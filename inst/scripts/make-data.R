@@ -48,7 +48,8 @@ file.remove('ASM294v2.cdna.all.fa.gz')
 file.remove('ASM294v2.ncrna.fa.gz')
 
 all_rnas <- c(cdnas, ncrnas)
-Biostrings::writeXStringSet(all_rnas, 'ASM294v2.pombase.all.fa.gz', compress = TRUE)
+rna_file <- file.path(extdata_dir, 'S.pombe.all.fa.gz')
+Biostrings::writeXStringSet(all_rnas, rna_file, compress = TRUE)
 
 if (Sys.which('kallisto') == "") {
   stop("kallisto does not seem to be part of your system's $PATH. ",
@@ -57,7 +58,7 @@ if (Sys.which('kallisto') == "") {
   v_string <- system2("kallisto", "version", stdout = TRUE)
   message(paste("Using", v_string))
 }
-args <- c('index', '-i ASM294v2.pombase.all.kidx', 'ASM294v2.pombase.all.fa.gz')
+args <- c('index', '-i ASM294v2.pombase.all.kidx', rna_file)
 system2('kallisto', args)
 
 ## Step 1B: Download the raw FASTQ files from ArrayExpress

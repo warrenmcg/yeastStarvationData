@@ -6,6 +6,7 @@ This data package contains processed data from [Marguerat et al. Cell 2012](http
 + [**Background**](https://github.com/warrenmcg/yeastStarvationData#background)
 + [**R Datasets**](https://github.com/warrenmcg/yeastStarvationData#r-datasets)
 + [**`kallisto` Datasets**](https://github.com/warrenmcg/yeastStarvationData#kallisto-datasets)
++ [**Schizosaccharomyces pombe Transcriptome File**](https://github.com/warrenmcg/yeastStarvationData#schizosaccharomyces-pombe-transcriptome-file)
 + [**Using this package with `sleuth`**](https://github.com/warrenmcg/yeastStarvationData#using-this-package-with-sleuth)
 + [**Using this package with `sleuth-ALR`**](https://github.com/warrenmcg/yeastStarvationData#using-this-package-with-sleuth-alr)
 + [**Installation of `yeastStarvationData`**](https://github.com/warrenmcg/yeastStarvationData#installation-of-yeaststarvationdata)
@@ -56,6 +57,22 @@ data(yeastS2C)
 ```
 [return to the table of contents](https://github.com/warrenmcg/yeastStarvationData#table-of-contents)
 
+## Schizosaccharomyces pombe Transcriptome File
+
+Besides the R datasets, this data package contains a multiFASTA file with all of the coding and non-coding transcripts
+from the fission yeast transcriptome, current as of release 37 of Ensembl Genomes. This can be useful for simulating
+an RNA-Seq dataset in yeast (see (`absSimSeq`)[https://github.com/warrenmcg/absSimSeq]), or for running your own
+analyses on the raw data (not included because the data files are several GBs each, but available for download at
+[ArrayExpress](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-1154/).
+
+This file can be accessed by the following code:
+```
+fasta_file <- system.file("extdata", "S.pombe.all.fa.gz",
+                          package = "yeastStarvationData")
+transcripts <- Biostrings::readDNAStringSet(fasta_file)
+### further manipulation of the transcriptome using Biostrings
+```
+
 ## `kallisto` Datasets
 
 This data package also contains [`kallisto`](https://github.com/pachterlab/kallisto) results that can be used for
@@ -77,7 +94,7 @@ for each transcript.
 
 These data can be accessed by the following code:
 ```
-kal_dirs <- system.file("extdata", package = "yeastStarvationData")
+kal_dirs <- list.dirs(system.file("extdata", package = "yeastStarvationData"))[-1]
 ## or for an individual directory
 kal_dir <- system.file("extdata", "ERR135906",
   package = "yeastStarvationData", mustWork = TRUE)
